@@ -1,0 +1,28 @@
+{
+    "AWSEBDockerrunVersion": 2,
+    "containerDefinitions": [
+      {
+        "name": "nginx",
+        "image": "gunjan0109/zomato-nginx",
+        "hostname": "nginx",
+        "essentials": true,
+        "postMappings": [{ "hostPort": 80, "containerPort": 80 }],
+        "links": ["client", "nodeserver"],
+        "memory": 128
+      },
+      {
+        "name": "client",
+        "image": "gunjan0109/zomato-client",
+        "hostname": "client",
+        "essentials": false,
+        "memory": 300
+      },
+      {
+        "name": "nodeserver",
+        "image": "gunjan0109/zomato-server",
+        "hostname": "nodeserver",
+        "essentials": false,
+        "memory": 300
+      }
+    ]
+  }
